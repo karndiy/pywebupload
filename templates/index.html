@@ -1,57 +1,42 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>อัปโหลดและดาวน์โหลดไฟล์</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col items-center p-4">
-
+<body>
     <!-- กล่องอัปโหลด -->
-    <div class="w-full max-w-xl bg-white shadow-md rounded-lg p-6 mt-10">
-        <h1 class="text-2xl font-bold text-center text-blue-600 mb-6">📁 อัปโหลดไฟล์</h1>
-
-        <form id="uploadForm" method="POST" enctype="multipart/form-data" action="/upload" class="flex flex-col gap-4">
-            <input id="fileInput" type="file" name="file" multiple
-                class="block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
-
-            <!-- แสดงจำนวนไฟล์ที่เลือก -->
-            <p id="fileCount" class="text-sm text-gray-500"></p>
-
-            <button type="submit"
-                class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded transition">
-                อัปโหลด
-            </button>
+    <div class="container">
+        <h1>📁 อัปโหลดไฟล์</h1>
+        <form id="uploadForm" method="POST" enctype="multipart/form-data" action="/upload">
+            <input id="fileInput" type="file" name="file" multiple />
+            <p id="fileCount"></p>
+            <button type="submit">อัปโหลด</button>
         </form>
     </div>
 
     <!-- กล่องรายชื่อไฟล์ -->
-    <div class="w-full max-w-xl bg-white shadow-md rounded-lg p-6 mt-8">
-        <h2 class="text-xl font-semibold text-gray-800 mb-4">📄 ไฟล์ที่อัปโหลดแล้ว</h2>
-        <ul class="space-y-2">
+    <div class="container" style="margin-top: 2rem;">
+        <h2>📄 ไฟล์ที่อัปโหลดแล้ว</h2>
+        <ul class="file-list">
             {% for file in files %}
-                <li class="flex justify-between items-center bg-gray-50 p-2 rounded hover:bg-gray-100">
-                    <span class="truncate max-w-[60%]">{{ file }}</span>
-                    <div class="flex gap-3">
-                        <a href="{{ url_for('download_file', filename=file) }}"
-                           class="text-blue-600 hover:underline">ดาวน์โหลด</a>
-
-                        <form method="POST" action="{{ url_for('delete_file', filename=file) }}"
-                              onsubmit="return confirm('ยืนยันลบไฟล์ {{ file }}?')">
-                            <button type="submit"
-                                    class="text-red-600 hover:underline">ลบ</button>
+                <li>
+                    <span title="{{ file }}">{{ file }}</span>
+                    <div class="file-actions">
+                        <a href="{{ url_for('download_file', filename=file) }}">ดาวน์โหลด</a>
+                        <form method="POST" action="{{ url_for('delete_file', filename=file) }}" onsubmit="return confirm('ยืนยันลบไฟล์ {{ file }}?')" style="margin:0;">
+                            <button type="submit">ลบ</button>
                         </form>
                     </div>
                 </li>
             {% else %}
-                <li class="text-gray-500">ยังไม่มีไฟล์ที่อัปโหลด</li>
+                <li style="color: #6b7280;">ยังไม่มีไฟล์ที่อัปโหลด</li>
             {% endfor %}
         </ul>
     </div>
 
-    <!-- JavaScript -->
     <script>
         const fileInput = document.getElementById('fileInput');
         const fileCount = document.getElementById('fileCount');
@@ -72,6 +57,5 @@
             }
         });
     </script>
-
 </body>
 </html>
