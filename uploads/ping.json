@@ -1,0 +1,16 @@
+[
+  {
+    "host": "8.8.8.8",
+    "packets": {
+      "sent": 4,
+      "received": 4,
+      "lost": 0,
+      "loss_percent": "0% loss"
+    },
+    "rtt_ms": {
+      "min": 30,
+      "max": 31,
+      "avg": 30
+    }
+  }
+]
