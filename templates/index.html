@@ -32,7 +32,15 @@
     <div class="w-full max-w-5xl bg-white shadow-md rounded-lg p-6 mt-8">
         <h2 class="text-xl font-semibold text-gray-800 mb-4">📄 ไฟล์ที่อัปโหลดแล้ว</h2>
         <div class="overflow-x-auto">
+<<<<<<< HEAD
             <table id="fileTable" class="min-w-full text-sm text-left">
+=======
+<<<<<<< HEAD
+            <table class="min-w-full text-sm text-left">
+=======
+            <table id="fileTable" class="min-w-full text-sm text-left">
+>>>>>>> 4f3e2bd (up)
+>>>>>>> 7a23457
                 <thead>
                     <tr class="bg-gray-200">
                         <th class="py-2 px-3">ชื่อไฟล์</th>
@@ -76,6 +84,12 @@
         {% endwith %}
     </div>
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    <!-- JavaScript สำหรับตรวจสอบไฟล์ก่อนอัปโหลด และยืนยันการลบ -->
+=======
+>>>>>>> 7a23457
     <!-- jQuery + DataTables JS -->
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
@@ -104,6 +118,10 @@
     </script>
 
     <!-- ตรวจสอบก่อนอัปโหลด และยืนยันการลบ -->
+<<<<<<< HEAD
+=======
+>>>>>>> 4f3e2bd (up)
+>>>>>>> 7a23457
     <script>
         document.getElementById('uploadForm').addEventListener('submit', function(event) {
             const fileInput = document.getElementById('fileInput');
@@ -112,7 +130,15 @@
                 alert('⚠️ กรุณาเลือกไฟล์ก่อนอัปโหลด');
             }
         });
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+        // ยืนยันก่อนลบไฟล์
+=======
+
+>>>>>>> 4f3e2bd (up)
+>>>>>>> 7a23457
         document.querySelectorAll('.delete-form').forEach(function(form) {
             form.addEventListener('submit', function(event) {
                 if (!confirm('คุณแน่ใจหรือไม่ว่าต้องการลบไฟล์นี้?')) {
